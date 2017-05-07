@@ -5,3 +5,8 @@ a.crypto-title {
     font-size: 30px;
     font-family: 'Catamaran', sans-serif;
 }
+
+.etc-button,
+.btc-button {
+    color: #0DAD8A !important;
+}
