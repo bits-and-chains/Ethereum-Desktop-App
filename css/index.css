@@ -2,7 +2,7 @@
 
 /* Bottom Orange Border */
 .fixed-top {
-    border-bottom: #FF5733;
+    border-bottom: #FF5733 6px solid;
 }
 
 /* Styling of Title */
@@ -13,7 +13,7 @@ a.crypto-title {
 }
 
 /* Styling of buttons */
-.etc-button,
+.eth-button,
 .btc-button {
     color: #0DAD8A !important;
 }
