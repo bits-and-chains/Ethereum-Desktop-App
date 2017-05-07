@@ -1,11 +1,18 @@
 /* Custom CSS for Crypto Currency Price App */
 
+/* Bottom Orange Border */
+.fixed-top {
+    border-bottom: #FF5733;
+}
+
+/* Styling of Title */
 a.crypto-title {
     color: #0DAD8A !important;
     font-size: 30px;
     font-family: 'Catamaran', sans-serif;
 }
 
+/* Styling of buttons */
 .etc-button,
 .btc-button {
     color: #0DAD8A !important;
