@@ -48,33 +48,31 @@
       var $ = require('jquery');
       var request = require('request');
 
-      var example = "Hello Mate";
-      var Client = require('coinbase').Client;
-      var client = new Client({'apiKey': 'ljaWDERE26n9TAGo',
-                         'apiSecret': 'GiUBDZWpW6TCDCezC0RwsI3g98u0R8aI'});
 
       (function(){
         // Get the Ethereum Price
-        client.getBuyPrice({'currencyPair': 'ETH-USD'}, function(err, price) {
-          var eth = price.data.amount
+        request("https://min-api.cryptocompare.com/data/price?fsym=ETH&tsyms=USD", function(error, response, body){
+          body = JSON.parse(body);
+          var eth = body['USD'];
 
         // Get the Bitcoin Price
-        client.getBuyPrice({'currencyPair': 'BTC-USD'}, function(err, price) {
-          console.log(price.data.amount);
-          var btc = price.data.amount
-          
+         request("https://min-api.cryptocompare.com/data/price?fsym=BTC&tsyms=USD", function(error, response, body){
+          body = JSON.parse(body);
+          var btc = body['USD'];
+
+        // $('h1').append(btc);
         // Eth and BTC toggling Feature
         $( ".btc-button" ).click(function() {
           $('h1').remove()
           $('.starter-template').append('<h1>')
-          $('h1').append(btc);
+          $('h1').append('$' + btc);
             });
 
         // BTC and ETH toggling Feature
         $( ".eth-button" ).click(function() {
           $('h1').remove()
           $('.starter-template').append('<h1>')
-          $('h1').append(eth);
+          $('h1').append('$' + eth);
             });
           });
         });
