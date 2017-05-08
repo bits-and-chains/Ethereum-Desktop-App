@@ -62,10 +62,19 @@
         client.getBuyPrice({'currencyPair': 'BTC-USD'}, function(err, price) {
           console.log(price.data.amount);
           var btc = price.data.amount
-
+          
         // Eth and BTC toggling Feature
         $( ".btc-button" ).click(function() {
+          $('h1').remove()
+          $('.starter-template').append('<h1>')
           $('h1').append(btc);
+            });
+
+        // BTC and ETH toggling Feature
+        $( ".eth-button" ).click(function() {
+          $('h1').remove()
+          $('.starter-template').append('<h1>')
+          $('h1').append(eth);
             });
           });
         });
