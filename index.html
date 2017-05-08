@@ -13,7 +13,7 @@
     <link rel="stylesheet" href="./css/index.css">
 
         <!-- Local JavaScript -->
-    <link rel="stylesheet" href="./js/index.js">
+    <script src="./js/index.js"></script>
 
     <!-- Bootstrap core CSS -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ" crossorigin="anonymous">
@@ -35,7 +35,7 @@
     <div class="container">
 
       <div class="starter-template">
-        <h1 class=" crypto-price float-left">95.78</h1>
+        <h1 class="crypto-price float-left"></h1>
         <div class="cryptobuttons float-right">
           <button class="eth-button btn btn-secondary">ETH</button>
           <button class="btc-button btn btn-secondary">BTC</button>
@@ -43,6 +43,29 @@
       </div>
 
     </div><!-- /.container -->
+    <!-- Script for App -->
+    <script>
+      var $ = require('jquery');
+      var request = require('request');
+
+      var example = "Hello Mate";
+      var Client = require('coinbase').Client;
+      var client = new Client({'apiKey': 'ljaWDERE26n9TAGo',
+                         'apiSecret': 'GiUBDZWpW6TCDCezC0RwsI3g98u0R8aI'});
+
+    client.getBuyPrice({'currencyPair': 'BTC-USD'}, function(err, price) {
+      var price = JSON.stringify(price);
+      var btc = price.slice(19,26);
+      console.log(price.slice(19,26));
+    });
+
+    client.getBuyPrice({'currencyPair': 'ETH-USD'}, function(err, price) {
+      var price = JSON.stringify(price);
+      console.log(price.slice(19,24));
+    });
+
+      $('h1').append(btc);
+    </script>
 
 
     <!-- Bootstrap core JavaScript
@@ -52,4 +75,8 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js" integrity="sha384-DztdAPBWPRXSA/3eYEEUWrWCy7G5KFbe8fFjk5JAIxUYHKkDx6Qin1DkWx51bBrb" crossorigin="anonymous"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/js/bootstrap.min.js" integrity="sha384-vBWWzlZJ8ea9aCX4pEW3rVHjgjt7zpkNpZk+02D9phzyeVkE+jo0ieGizqPLForn" crossorigin="anonymous"></script>
   </body>
+      <!-- Not sure what render does -->
+    <script>
+      require('./renderer.js')
+    </script>
 </html>
