@@ -53,18 +53,21 @@
       var client = new Client({'apiKey': 'ljaWDERE26n9TAGo',
                          'apiSecret': 'GiUBDZWpW6TCDCezC0RwsI3g98u0R8aI'});
 
-    client.getBuyPrice({'currencyPair': 'BTC-USD'}, function(err, price) {
-      var price = JSON.stringify(price);
-      var btc = price.slice(19,26);
-      console.log(price.slice(19,26));
-    });
+      (function(){
+        // Get the Ethereum Price
+        client.getBuyPrice({'currencyPair': 'ETH-USD'}, function(err, price) {
+          var eth = price.data.amount
 
-    client.getBuyPrice({'currencyPair': 'ETH-USD'}, function(err, price) {
-      var price = JSON.stringify(price);
-      console.log(price.slice(19,24));
-    });
+        // Get the Bitcoin Price
+        client.getBuyPrice({'currencyPair': 'BTC-USD'}, function(err, price) {
+          console.log(price.data.amount);
+          var btc = price.data.amount
+          $('h1').append(eth);
+          });
+        });
+      })();
 
-      $('h1').append(btc);
+
     </script>
 
 
